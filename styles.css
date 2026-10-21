@@ -15,6 +15,37 @@
   --page-padding: clamp(24px, 7.6vw, 150px);
 }
 
+/* Solo se utiliza el archivo del intervalo de pantalla activo. */
+@media (width > 650px) {
+  .hero {
+    --hero-image: url("assets/hero-background-desktop.webp");
+  }
+
+  .about-screen,
+  .contact-screen {
+    --page-image: url("assets/winter-background-desktop.webp");
+  }
+
+  .projects-screen {
+    --page-image: url("assets/projects-background-desktop.webp");
+  }
+}
+
+@media (width <= 650px) {
+  .hero {
+    --hero-image: url("assets/hero-background-mobile.webp");
+  }
+
+  .about-screen,
+  .contact-screen {
+    --page-image: url("assets/winter-background-mobile.webp");
+  }
+
+  .projects-screen {
+    --page-image: url("assets/projects-background-mobile.webp");
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -155,7 +186,7 @@ svg {
   position: relative;
   min-height: calc(100svh - var(--header-height));
   overflow: hidden;
-  background: #0c0d0b url("assets/hero-background.png") no-repeat center / cover;
+  background: #0c0d0b var(--hero-image) no-repeat center / cover;
   color: var(--foreground);
 }
 
@@ -303,15 +334,6 @@ h1 {
   background-size: cover;
   background-attachment: fixed;
   color: #f5f8fb;
-}
-
-.about-screen,
-.contact-screen {
-  --page-image: url("assets/winter-background.png");
-}
-
-.projects-screen {
-  --page-image: url("assets/projects-background.png");
 }
 
 .image-screen .page {
