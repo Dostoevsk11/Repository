@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400&family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
 
 /* Paleta y medidas compartidas. */
 :root {
@@ -8,9 +8,7 @@
   --muted: #5c6b7b;
   --accent: #2c6f9e;
   --border: #d3dde7;
-  --font-heading: "Inter", "Segoe UI", Arial, sans-serif;
-  --font-body: "Inter", "Segoe UI", Arial, sans-serif;
-  --font-quote: "Cormorant Garamond", Georgia, serif;
+  --font-family: "DM Sans", "Segoe UI", Arial, sans-serif;
   --header-height: 88px;
   --page-padding: clamp(24px, 7.6vw, 150px);
 }
@@ -21,13 +19,16 @@
     --hero-image: url("assets/hero-background-desktop.webp");
   }
 
-  .about-screen,
-  .contact-screen {
+  .about-screen {
     --page-image: url("assets/winter-background-desktop.webp");
   }
 
+  .contact-screen {
+    --page-image: url("assets/contact-flowers-desktop.webp");
+  }
+
   .projects-screen {
-    --page-image: url("assets/projects-background-desktop.webp");
+    --page-image: url("assets/projects-house-desktop.webp");
   }
 }
 
@@ -36,13 +37,16 @@
     --hero-image: url("assets/hero-background-mobile.webp");
   }
 
-  .about-screen,
-  .contact-screen {
+  .about-screen {
     --page-image: url("assets/winter-background-mobile.webp");
   }
 
+  .contact-screen {
+    --page-image: url("assets/contact-flowers-mobile.webp");
+  }
+
   .projects-screen {
-    --page-image: url("assets/projects-background-mobile.webp");
+    --page-image: url("assets/projects-house-mobile.webp");
   }
 }
 
@@ -61,7 +65,7 @@ body {
   padding-top: var(--header-height);
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body);
+  font-family: var(--font-family);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -121,22 +125,24 @@ svg {
 
 /* Navegación fija en todas las páginas. */
 .site-header {
+  --foreground: #f5f7fa;
+  --muted: #ced8e2;
+  --accent: #b8daf1;
   position: fixed;
   z-index: 20;
   inset: 0 0 auto;
   display: flex;
   align-items: center;
-  gap: clamp(50px, 7.2vw, 122px);
+  justify-content: space-between;
+  gap: 24px;
   height: var(--header-height);
   padding: 0 clamp(24px, 5.3vw, 105px);
-  background-color: #f3f6f9ed;
+  background-color: transparent;
   color: var(--foreground);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(12px);
 }
 
 .monogram {
-  font: 600 26px/1 var(--font-heading);
+  font: 600 26px/1 var(--font-family);
   letter-spacing: -1.5px;
 }
 
@@ -184,7 +190,9 @@ svg {
   --muted: #ced8e2;
   --accent: #b8daf1;
   position: relative;
-  min-height: calc(100svh - var(--header-height));
+  min-height: 100svh;
+  margin-top: calc(-1 * var(--header-height));
+  padding-top: var(--header-height);
   overflow: hidden;
   background: #0c0d0b var(--hero-image) no-repeat center / cover;
   color: var(--foreground);
@@ -213,7 +221,7 @@ svg {
 
 h1 {
   margin: 20px 0 0;
-  font: 600 clamp(44px, 4.5vw, 78px)/1.12 var(--font-heading);
+  font: 600 clamp(44px, 4.5vw, 78px)/1.12 var(--font-family);
   letter-spacing: -2px;
 }
 
@@ -225,7 +233,7 @@ h1 {
 .hero-quote {
   margin: 0;
   color: var(--muted);
-  font: italic 400 clamp(29px, 2.1vw, 38px)/1.18 var(--font-quote);
+  font: italic 400 clamp(23px, 1.8vw, 30px)/1.4 var(--font-family);
 }
 
 .hero-quote p {
@@ -297,7 +305,7 @@ h1 {
 
 .technology-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 32px 18px;
   margin: 0;
   padding: 0;
@@ -328,12 +336,17 @@ h1 {
 /* Fondos independientes de cada página. */
 .image-screen {
   background-color: #58616b;
-  background-image: linear-gradient(90deg, #263342df 0%, #263342d1 58%, #263342b8 80%, #26334200 100%), var(--page-image);
+  background-image: linear-gradient(180deg, #0c111bd9, #0c111b00 200px), linear-gradient(90deg, #263342df 0%, #263342d1 58%, #263342b8 80%, #26334200 100%), var(--page-image);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
   color: #f5f8fb;
+}
+
+.contact-screen {
+  background-color: #000;
+  background-image: linear-gradient(180deg, #000000b3, #00000000 200px), var(--page-image);
 }
 
 .image-screen .page {
@@ -351,7 +364,7 @@ h1 {
 
 .page-title {
   margin: 0;
-  font: 600 clamp(44px, 4.2vw, 68px)/1.12 var(--font-heading);
+  font: 600 clamp(44px, 4.2vw, 68px)/1.12 var(--font-family);
   letter-spacing: -1.8px;
 }
 
@@ -441,7 +454,7 @@ h1 {
 }
 
 .skill-card--wide {
-  grid-column: span 4;
+  grid-column: span 6;
 }
 
 .skill-card-heading {
@@ -452,7 +465,7 @@ h1 {
 
 .skill-card h3 {
   margin: 0;
-  font: 600 15px/1.4 var(--font-heading);
+  font: 600 15px/1.4 var(--font-family);
 }
 
 .skill-icon {
@@ -510,7 +523,7 @@ h1 {
 .project-heading h2 {
   max-width: 760px;
   margin: 0;
-  font: 600 clamp(24px, 2.5vw, 34px)/1.25 var(--font-heading);
+  font: 600 clamp(24px, 2.5vw, 34px)/1.25 var(--font-family);
   letter-spacing: -0.8px;
 }
 
@@ -546,10 +559,11 @@ h1 {
 }
 
 /* Contacto. */
-.contact-page {
+.page.contact-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-block-end: clamp(128px, 22svh, 220px);
 }
 
 .contact-panel {
@@ -569,6 +583,9 @@ h1 {
 }
 
 .contact-list dt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--muted);
   font-size: 12px;
   font-weight: 500;
@@ -586,12 +603,15 @@ h1 {
   transition: color 0.2s;
 }
 
-.contact-list a:hover {
-  color: var(--accent);
+.contact-icon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
 }
 
-.selectable {
-  user-select: all;
+.contact-list a:hover {
+  color: var(--accent);
 }
 
 /* Tablet. */
@@ -640,6 +660,11 @@ h1 {
     pointer-events: none;
   }
 
+  .contact-screen::before {
+    background-color: #000;
+    background-image: linear-gradient(90deg, #00000099, #00000066), var(--page-image);
+  }
+
   .image-screen .page {
     --content-width: 100%;
     position: relative;
@@ -661,10 +686,6 @@ h1 {
   .skill-card,
   .skill-card--wide {
     grid-column: span 6;
-  }
-
-  .skill-card:last-child {
-    grid-column: 1 / -1;
   }
 
   .project-components {
@@ -719,7 +740,7 @@ h1 {
   }
 
   .hero-quote {
-    font-size: clamp(25px, 6.4vw, 30px);
+    font-size: clamp(21px, 5.6vw, 25px);
   }
 
   .technologies {
@@ -801,13 +822,20 @@ h1 {
   }
 
   .contact-list > div {
-    grid-template-columns: 78px 1fr;
+    grid-template-columns: 90px 1fr;
     gap: 12px;
     padding: 22px 0;
   }
 
   .contact-list dt {
+    gap: 8px;
     font-size: 10px;
+  }
+
+  .contact-icon {
+    flex-basis: 18px;
+    width: 18px;
+    height: 18px;
   }
 
   .contact-list dd {
@@ -833,7 +861,7 @@ h1 {
   }
 
   .hero-quote {
-    font-size: 23px;
+    font-size: 21px;
   }
 }
 
