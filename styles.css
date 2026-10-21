@@ -594,12 +594,14 @@ h1 {
     background-attachment: scroll;
   }
 
-  /* El fondo sigue visible aunque el contenido supere la altura de la pantalla. */
+  /* Altura estable al mostrar u ocultar la barra del navegador móvil. */
   .image-screen::before {
     content: "";
     position: fixed;
     z-index: -1;
-    inset: 0;
+    inset: 0 0 auto;
+    height: 100vh;
+    height: 100lvh;
     background-color: #58616b;
     background-image: linear-gradient(90deg, #263342c4, #263342b3), var(--page-image);
     background-repeat: no-repeat;
